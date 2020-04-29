@@ -73,13 +73,15 @@ def db_insert_q():
     session['user_id'] = user_id
     ###############
     form = QuestionForm()
-    question = Question()
-    question.q_user_id = user_id
-    question.subject = form.data.get('subject')
-    question.topic = form.data.get('topic')
-    question.content = form.data.get('contetnt')
-    dbb.session.add(question)
-    dbb.session.commit()
+    if form.validate_on_submit():
+        question = Question()
+        question.q_user_id = user_id
+        question.subject = form.data.get('subject')
+        question.topic = form.data.get('topic')
+        question.content = form.data.get('content')
+        dbb.session.add(question)
+        dbb.session.commit()
+        return redirect('/')
     return render_template('question_make.html', form = form, user_email= session['user_email'])
 
 

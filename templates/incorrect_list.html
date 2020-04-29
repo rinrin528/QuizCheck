@@ -7,6 +7,7 @@
 </head>
 <body>
     <form method="POST" action="/incorrect_note">
+        {{form.csrf_token}}
         <h5> 출력하고자 하는 사용자 번호를 입력하세요.</h5>
 
 <input type="text" name="a_user_id">

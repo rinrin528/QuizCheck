@@ -223,7 +223,7 @@ if __name__ == '__main__':
 
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    app.config['SECRET_KEY'] = 'dsafwefasghwqewrhujtytre'
+    app.config['SECRET_KEY'] = 'dafewgjhgegflkjwnkfsd'
 
     #csrf 위변조 공격을 막기위한 코드
     csrf = CSRFProtect()

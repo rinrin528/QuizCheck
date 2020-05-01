@@ -9,7 +9,8 @@ class RegisterForm(FlaskForm):
         def __init__(self, message=None):
             self.message = message
         def __call__(self,form, field):
-            user_email = form['user_email'].data
+            #user_email = form['user_email'].data
+            user_email = field.data
             samemail = User.query.filter_by(user_email=user_email).first()
             if samemail:
                 raise ValueError('  !이미 존재하는 이메일입니다.')
@@ -17,7 +18,8 @@ class RegisterForm(FlaskForm):
         def __init__(self, message=None):
             self.message = message
         def __call__(self,form, field):
-            user_name = form['user_name'].data
+            #user_name = form['user_name'].data
+            user_name = field.data
             samename = User.query.filter_by(user_name=user_name).first()
             if samename:
                 raise ValueError('  !이미 존재하는 닉네임입니다.')
@@ -35,7 +37,6 @@ class LoginForm(FlaskForm):
             user_pw = field.data
             user = User.query.filter_by(user_email=user_email).first()
             if user.user_pw != user_pw:
-                # raise ValidationError(message % d)
                 raise ValueError('  잘못된 아이디나 비밀번호입니다.')
     user_email = StringField('user_email', validators=[DataRequired()])
     user_pw = PasswordField('user_pw', validators=[DataRequired(), UserPassword()])

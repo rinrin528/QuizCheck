@@ -10,8 +10,8 @@ app = Flask(__name__)
 # pymysql을 사용해 DB 연결
 db= pymysql.connect(host='localhost',
                      port=3306,
-                     user='root',
-                     passwd='dbsecure',
+                     user='test',
+                     passwd='passwd',
                      db='studyblank',
                      charset='utf8')
 
@@ -217,7 +217,7 @@ def grade(answer=None):
 
 
 if __name__ == '__main__':
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:dbsecure@localhost/studyblank' ##서버의 db설정으로 변경 필요
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://test:passwd@localhost/studyblank' ##서버의 db설정으로 변경 필요
 
     app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 
@@ -233,5 +233,5 @@ if __name__ == '__main__':
     dbb.init_app(app)
     dbb.app = app
     dbb.create_all()  # SQLAlchemy 이용한 db 생성
-    app.run(host='127.0.0.1', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000)
 

@@ -41,7 +41,6 @@ def register():
 
         dbb.session.add(user)
         dbb.session.commit()
-
         return redirect('/login')
     return render_template('register.html',form=form)
 
@@ -83,21 +82,6 @@ def db_insert_q():
         dbb.session.commit()
         return redirect('/')
     return render_template('question_make.html', form = form, user_email= session['user_email'])
-
-
-# 문제장 insert
-@app.route('/question/make',methods = ['POST'])
-def make_question_list():
-
-    # sql = """INSERT INTO question(q_user_id,subject, topic, content)
-    #              VALUES(\'{q_user_id}\', \'{subject}\',\'{topic}\',\'{content}\');"""
-    # sql = sql.format(q_user_id = request.form['q_user_id'], subject=form.data.get('subject'),topic= form.data.get('topic'), content=form.data.get('content'))
-    # print(sql)
-    # cursor.execute(sql)
-    # db.commit()
-
-    return redirect(url_for('success'))
-
 
 
 @app.route('/success', methods=['POST','GET'])
@@ -239,7 +223,7 @@ if __name__ == '__main__':
 
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    app.config['SECRET_KEY'] = 'wcsfeufhwiquehfdx'
+    app.config['SECRET_KEY'] = 'dsafwefasghwqewrhujtytre'
 
     #csrf 위변조 공격을 막기위한 코드
     csrf = CSRFProtect()

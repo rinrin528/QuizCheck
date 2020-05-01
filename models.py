@@ -19,6 +19,7 @@ class Question(dbb.Model):
     subject = dbb.Column(dbb.String(255))
     topic = dbb.Column(dbb.String(255))
     content = dbb.Column(dbb.String(1000))
+
 class Answer(dbb.Model):
     __tablename__ = 'answer'
     a_id = dbb.Column(dbb.Integer, primary_key=True, unique=True, autoincrement=True)
